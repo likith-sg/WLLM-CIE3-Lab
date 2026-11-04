@@ -1,0 +1,402 @@
+[
+  {
+    "id": "TC01",
+    "category": "Simple words",
+    "input_hinglish": "namaste",
+    "reference_hindi": "नमस्ते",
+    "reference_english": "Greetings / Hello",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC02",
+    "category": "Simple words",
+    "input_hinglish": "shukriya",
+    "reference_hindi": "शुक्रिया",
+    "reference_english": "Thank you",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC03",
+    "category": "Simple words",
+    "input_hinglish": "dhanyawad",
+    "reference_hindi": "धन्यवाद",
+    "reference_english": "Thank you",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC04",
+    "category": "Simple words",
+    "input_hinglish": "swagat",
+    "reference_hindi": "स्वागत",
+    "reference_english": "Welcome",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC05",
+    "category": "Short sentences",
+    "input_hinglish": "aap kaise ho?",
+    "reference_hindi": "आप कैसे हो?",
+    "reference_english": "How are you?",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC06",
+    "category": "Short sentences",
+    "input_hinglish": "mai theek hu.",
+    "reference_hindi": "मैं ठीक हूँ।",
+    "reference_english": "I am fine.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC07",
+    "category": "Short sentences",
+    "input_hinglish": "aaj mausam achha hai.",
+    "reference_hindi": "आज मौसम अच्छा है।",
+    "reference_english": "The weather is pleasant today.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC08",
+    "category": "Short sentences",
+    "input_hinglish": "kya chal raha hai?",
+    "reference_hindi": "क्या चल रहा है?",
+    "reference_english": "What is going on?",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC09",
+    "category": "Long sentences",
+    "input_hinglish": "hum artificial intelligence aur natural language processing ka use karke ek smart writing assistant bana rahe hai.",
+    "reference_hindi": "हम आर्टिफिशियल इंटेलिजेंस और नेचुरल लैंग्वेज प्रोसेसिंग का उपयोग करके एक स्मार्ट राइटिंग असिस्टेंट बना रहे हैं।",
+    "reference_english": "We are building a smart writing assistant using artificial intelligence and natural language processing.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC10",
+    "category": "Long sentences",
+    "input_hinglish": "agar aap kal samay par aayenge toh hum milkar is project ki report complete kar lenge.",
+    "reference_hindi": "अगर आप कल समय पर आएँगे तो हम मिलकर इस प्रोजेक्ट की रिपोर्ट पूरी कर लेंगे।",
+    "reference_english": "If you arrive on time tomorrow, we will complete this project report together.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC11",
+    "category": "Long sentences",
+    "input_hinglish": "pichle hafte hamare college me ek national technical symposium organise kiya gaya tha jisme bohot se students ne participate kiya.",
+    "reference_hindi": "पिछले हफ्ते हमारे कॉलेज में एक राष्ट्रीय तकनीकी संगोष्ठी आयोजित की गई थी जिसमें बहुत से छात्रों ने भाग लिया।",
+    "reference_english": "A national technical symposium was organized in our college last week in which many students participated.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC12",
+    "category": "Long sentences",
+    "input_hinglish": "bharat me vibhinn bhashaye boli jaati hai aur unhe digital platform par prastut karna ek mahatvapurna kadam hai.",
+    "reference_hindi": "भारत में विभिन्न भाषाएं बोली जाती हैं और उन्हें डिजिटल प्लेटफॉर्म पर प्रस्तुत करना एक महत्वपूर्ण कदम है।",
+    "reference_english": "Different languages are spoken in India and presenting them on a digital platform is an important step.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC13",
+    "category": "Questions",
+    "input_hinglish": "kya aap mujhe raste ke baare me bata sakte hai?",
+    "reference_hindi": "क्या आप मुझे रास्ते के बारे में बता सकते हैं?",
+    "reference_english": "Can you tell me about the directions?",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC14",
+    "category": "Questions",
+    "input_hinglish": "kal ki class kitne baje shuru hogi?",
+    "reference_hindi": "कल की क्लास कितने बजे शुरू होगी?",
+    "reference_english": "What time will tomorrow's class start?",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC15",
+    "category": "Questions",
+    "input_hinglish": "yeh train platform number kitne par aayegi?",
+    "reference_hindi": "यह ट्रेन प्लेटफॉर्म नंबर कितने पर आएगी?",
+    "reference_english": "On which platform number will this train arrive?",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC16",
+    "category": "Questions",
+    "input_hinglish": "kya aapne homework complete kar liya?",
+    "reference_hindi": "क्या आपने होमवर्क पूरा कर लिया?",
+    "reference_english": "Have you completed your homework?",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC17",
+    "category": "Commands and requests",
+    "input_hinglish": "kripya darwaza band kar dijiye.",
+    "reference_hindi": "कृपया दरवाज़ा बंद कर दीजिए।",
+    "reference_english": "Please close the door.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC18",
+    "category": "Commands and requests",
+    "input_hinglish": "mujhe ek glass paani do.",
+    "reference_hindi": "मुझे एक गिलास पानी दो।",
+    "reference_english": "Give me a glass of water.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC19",
+    "category": "Commands and requests",
+    "input_hinglish": "jaldi aao aur meri madad karo.",
+    "reference_hindi": "जल्दी आओ और मेरी मदद करो।",
+    "reference_english": "Come quickly and help me.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC20",
+    "category": "Commands and requests",
+    "input_hinglish": "apna mobile silent mode par rakhein.",
+    "reference_hindi": "अपना मोबाइल साइलेंट मोड पर रखें।",
+    "reference_english": "Keep your mobile on silent mode.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC21",
+    "category": "Conversational Hindi",
+    "input_hinglish": "bhai kal sham ko chai peene chalte hai.",
+    "reference_hindi": "भाई कल शाम को चाय पीने चलते हैं।",
+    "reference_english": "Brother, let's go for tea tomorrow evening.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC22",
+    "category": "Conversational Hindi",
+    "input_hinglish": "arre yaar sab kuch theek ho jayega chinta mat karo.",
+    "reference_hindi": "अरे यार सब कुछ ठीक हो जाएगा चिंता मत करो।",
+    "reference_english": "Oh friend, everything will be fine, do not worry.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC23",
+    "category": "Conversational Hindi",
+    "input_hinglish": "meri baat dhyan se suno aur samjho.",
+    "reference_hindi": "मेरी बात ध्यान से सुनो और समझो।",
+    "reference_english": "Listen to me carefully and understand.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC24",
+    "category": "Conversational Hindi",
+    "input_hinglish": "aaj ka din bohot thakane wala tha.",
+    "reference_hindi": "आज का दिन बहुत थकाने वाला था।",
+    "reference_english": "Today was a very exhausting day.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC25",
+    "category": "Educational expressions",
+    "input_hinglish": "is theorem ka proof exam me aane ki sambhavna hai.",
+    "reference_hindi": "इस प्रमेय का प्रमाण परीक्षा में आने की संभावना है।",
+    "reference_english": "There is a possibility of this theorem's proof appearing in the examination.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC26",
+    "category": "Educational expressions",
+    "input_hinglish": "vidyarthi library me baithkar padhai kar rahe hai.",
+    "reference_hindi": "विद्यार्थी लाइब्रेरी में बैठकर पढ़ाई कर रहे हैं।",
+    "reference_english": "Students are studying sitting in the library.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC27",
+    "category": "Educational expressions",
+    "input_hinglish": "professor ne research paper submit karne ke nirdesh diye hai.",
+    "reference_hindi": "प्रोफेसर ने रिसर्च पेपर जमा करने के निर्देश दिए हैं।",
+    "reference_english": "The professor has given instructions to submit the research paper.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC28",
+    "category": "Educational expressions",
+    "input_hinglish": "kya aapne semester ka syllabus download kiya?",
+    "reference_hindi": "क्या आपने सेमेस्टर का सिलेबस डाउनलोड किया?",
+    "reference_english": "Did you download the semester syllabus?",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC29",
+    "category": "Mixed Hindi-English expressions",
+    "input_hinglish": "heavy traffic ki wajah se mai office late pahuncha.",
+    "reference_hindi": "भारी ट्रैफिक की वजह से मैं ऑफिस लेट पहुँचा।",
+    "reference_english": "Due to heavy traffic, I reached the office late.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC30",
+    "category": "Mixed Hindi-English expressions",
+    "input_hinglish": "mujhe code debug karne me error aa raha hai.",
+    "reference_hindi": "मुझे कोड डीबग करने में एरर आ रहा है।",
+    "reference_english": "I am getting an error while debugging the code.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC31",
+    "category": "Mixed Hindi-English expressions",
+    "input_hinglish": "online shopping karte waqt discount coupon apply karna mat bhoolna.",
+    "reference_hindi": "ऑनलाइन शॉपिंग करते वक्त डिस्काउंट कूपन लगाना मत भूलना।",
+    "reference_english": "Do not forget to apply the discount coupon while online shopping.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC32",
+    "category": "Mixed Hindi-English expressions",
+    "input_hinglish": "zoom meeting ka link email par share kar diya gaya hai.",
+    "reference_hindi": "ज़ूम मीटिंग का लिंक ईमेल पर शेयर कर दिया गया है।",
+    "reference_english": "The Zoom meeting link has been shared via email.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC33",
+    "category": "Ambiguous Roman spellings",
+    "input_hinglish": "mai kal sham ko market jaunga aur kuch naye kapde khareedunga",
+    "reference_hindi": "मैं कल शाम को मार्केट जाऊँगा और कुछ नए कपड़े खरीदूँगा",
+    "reference_english": "I will go to the market tomorrow evening and buy some new clothes.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC34",
+    "category": "Ambiguous Roman spellings",
+    "input_hinglish": "unka behaviour bohot ajeeb tha.",
+    "reference_hindi": "उनका व्यवहार बहुत अजीब था।",
+    "reference_english": "Their behavior was very strange.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC35",
+    "category": "Ambiguous Roman spellings",
+    "input_hinglish": "mujhe lagta hai ki yeh sahi faisla hai.",
+    "reference_hindi": "मुझे लगता है कि यह सही फैसला है।",
+    "reference_english": "I feel that this is the right decision.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC36",
+    "category": "Ambiguous Roman spellings",
+    "input_hinglish": "kabhi kabhi hum galat samajh lete hai.",
+    "reference_hindi": "कभी-कभी हम गलत समझ लेते हैं।",
+    "reference_english": "Sometimes we misunderstand.",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC37",
+    "category": "Different punctuation and number patterns",
+    "input_hinglish": "aaj 15 august 2026 hai, aur timing 10:30 AM hai!",
+    "reference_hindi": "आज 15 अगस्त 2026 है, और समय 10:30 AM है!",
+    "reference_english": "Today is August 15, 2026, and the time is 10:30 AM!",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC38",
+    "category": "Different punctuation and number patterns",
+    "input_hinglish": "total bill 1,250 rupees hua (GST include karke).",
+    "reference_hindi": "कुल बिल 1,250 रुपये हुआ (जीएसटी शामिल करके)।",
+    "reference_english": "The total bill is 1,250 rupees (including GST).",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC39",
+    "category": "Different punctuation and number patterns",
+    "input_hinglish": "kya room 402 me 3 chairs aur 2 tables hai?",
+    "reference_hindi": "क्या रूम 402 में 3 कुर्सियाँ और 2 टेबल हैं?",
+    "reference_english": "Are there 3 chairs and 2 tables in room 402?",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  },
+  {
+    "id": "TC40",
+    "category": "Different punctuation and number patterns",
+    "input_hinglish": "score 98.5% tha; yeh sach me anokha hai!",
+    "reference_hindi": "स्कोर 98.5% था; यह सच में अनोखा है!",
+    "reference_english": "The score was 98.5%; this is truly remarkable!",
+    "predicted_hindi": "",
+    "predicted_english": "",
+    "status": "pending"
+  }
+]

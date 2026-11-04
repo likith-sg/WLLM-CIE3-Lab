@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+.env
+.venv*
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Testing & Caches
+.pytest_cache/
+.coverage
+htmlcov/
+.streamlit/secrets.toml
+
+# Large Model Checkpoints (local cache)
+models_cache/
+*.bin
+*.safetensors
+*.pt
+*.onnx
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store

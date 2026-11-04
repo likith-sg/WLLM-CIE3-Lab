@@ -1,0 +1,1073 @@
+{
+  "total_test_cases": 40,
+  "average_cer": 0.1399,
+  "corpus_cer": 0.1873,
+  "average_word_accuracy": 74.13,
+  "average_wer": 0.3511,
+  "average_bleu": 33.03,
+  "average_chrf": 39.66,
+  "category_breakdown": [
+    {
+      "category": "Simple words",
+      "test_cases": 4,
+      "avg_cer": 0.0,
+      "avg_word_accuracy": 100.0,
+      "avg_bleu": 46.46,
+      "perfect_matches": 4,
+      "accuracy_rate": 100.0
+    },
+    {
+      "category": "Short sentences",
+      "test_cases": 4,
+      "avg_cer": 0.0355,
+      "avg_word_accuracy": 85.42,
+      "avg_bleu": 100.0,
+      "perfect_matches": 2,
+      "accuracy_rate": 50.0
+    },
+    {
+      "category": "Long sentences",
+      "test_cases": 4,
+      "avg_cer": 0.2506,
+      "avg_word_accuracy": 62.87,
+      "avg_bleu": 2.79,
+      "perfect_matches": 0,
+      "accuracy_rate": 0.0
+    },
+    {
+      "category": "Questions",
+      "test_cases": 4,
+      "avg_cer": 0.1567,
+      "avg_word_accuracy": 78.45,
+      "avg_bleu": 25.94,
+      "perfect_matches": 1,
+      "accuracy_rate": 25.0
+    },
+    {
+      "category": "Commands and requests",
+      "test_cases": 4,
+      "avg_cer": 0.1002,
+      "avg_word_accuracy": 68.33,
+      "avg_bleu": 53.46,
+      "perfect_matches": 0,
+      "accuracy_rate": 0.0
+    },
+    {
+      "category": "Conversational Hindi",
+      "test_cases": 4,
+      "avg_cer": 0.0428,
+      "avg_word_accuracy": 84.73,
+      "avg_bleu": 52.18,
+      "perfect_matches": 0,
+      "accuracy_rate": 0.0
+    },
+    {
+      "category": "Educational expressions",
+      "test_cases": 4,
+      "avg_cer": 0.2481,
+      "avg_word_accuracy": 57.41,
+      "avg_bleu": 3.46,
+      "perfect_matches": 0,
+      "accuracy_rate": 0.0
+    },
+    {
+      "category": "Mixed Hindi-English expressions",
+      "test_cases": 4,
+      "avg_cer": 0.2271,
+      "avg_word_accuracy": 59.34,
+      "avg_bleu": 5.04,
+      "perfect_matches": 0,
+      "accuracy_rate": 0.0
+    },
+    {
+      "category": "Ambiguous Roman spellings",
+      "test_cases": 4,
+      "avg_cer": 0.1008,
+      "avg_word_accuracy": 75.42,
+      "avg_bleu": 30.88,
+      "perfect_matches": 1,
+      "accuracy_rate": 25.0
+    },
+    {
+      "category": "Different punctuation and number patterns",
+      "test_cases": 4,
+      "avg_cer": 0.2374,
+      "avg_word_accuracy": 69.38,
+      "avg_bleu": 10.11,
+      "perfect_matches": 0,
+      "accuracy_rate": 0.0
+    }
+  ],
+  "failure_analysis": {
+    "total_failures": 32,
+    "category_breakdown": {
+      "AMBIGUOUS_SPELLING": 28,
+      "MULTIPLE_MEANINGS": 0,
+      "INCORRECT_SEGMENTATION": 0,
+      "ENGLISH_TRANSLITERATION": 2,
+      "INCORRECT_MATRA": 2,
+      "SEMANTIC_DRIFT": 0,
+      "CONTEXT_LOSS_TRANSLATION": 0,
+      "OOV_WORDS": 0,
+      "OTHER": 0
+    },
+    "sample_failure_cases": [
+      {
+        "id": "TC06",
+        "input": "mai theek hu.",
+        "expected": "मैं ठीक हूँ।",
+        "predicted": "मैं ठीक हूँ ।",
+        "category": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      {
+        "id": "TC07",
+        "input": "aaj mausam achha hai.",
+        "expected": "आज मौसम अच्छा है।",
+        "predicted": "आज मौसम अच्छा है ।",
+        "category": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      {
+        "id": "TC09",
+        "input": "hum artificial intelligence aur natural language processing ka use karke ek smart writing assistant bana rahe hai.",
+        "expected": "हम आर्टिफिशियल इंटेलिजेंस और नेचुरल लैंग्वेज प्रोसेसिंग का उपयोग करके एक स्मार्ट राइटिंग असिस्टेंट बना रहे हैं।",
+        "predicted": "हम अरतिफिकिaल इंतेललिगेंस और नतुरल लंगुaगे परोकेससिंग का उसे करके एक समरत वरितिंग अससिसतंत बना रहे है ।",
+        "category": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      {
+        "id": "TC10",
+        "input": "agar aap kal samay par aayenge toh hum milkar is project ki report complete kar lenge.",
+        "expected": "अगर आप कल समय पर आएँगे तो हम मिलकर इस प्रोजेक्ट की रिपोर्ट पूरी कर लेंगे।",
+        "predicted": "अगर आप कल समय पर आएँगे तो हम मिलकर इस प्रोजेक्ट की रिपोर्ट कोमपलेते कर लेंगे ।",
+        "category": "English Words Incorrectly Transliterated",
+        "explanation": "Input contains English loan words that may have undergone phonetic conversion.",
+        "suggestion": "Entity extraction and language identification (LID) filter for English loanwords."
+      },
+      {
+        "id": "TC11",
+        "input": "pichle hafte hamare college me ek national technical symposium organise kiya gaya tha jisme bohot se students ne participate kiya.",
+        "expected": "पिछले हफ्ते हमारे कॉलेज में एक राष्ट्रीय तकनीकी संगोष्ठी आयोजित की गई थी जिसमें बहुत से छात्रों ने भाग लिया।",
+        "predicted": "पिछले हफ्ते हमारे कॉलेज में एक नतिoनल तेचनिकल सयमपोसिuम ओरगनिसे किया गया था जिसमे बहुत से सतुदेंतस ने परतिकिपते किया ।",
+        "category": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      {
+        "id": "TC12",
+        "input": "bharat me vibhinn bhashaye boli jaati hai aur unhe digital platform par prastut karna ek mahatvapurna kadam hai.",
+        "expected": "भारत में विभिन्न भाषाएं बोली जाती हैं और उन्हें डिजिटल प्लेटफॉर्म पर प्रस्तुत करना एक महत्वपूर्ण कदम है।",
+        "predicted": "भारत में विभिन्न भाषाएं बोली जाती है और उन्हें दिगितल पलतफोरम पर प्रस्तुत करना एक महत्वपूर्ण कदम है ।",
+        "category": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      {
+        "id": "TC13",
+        "input": "kya aap mujhe raste ke baare me bata sakte hai?",
+        "expected": "क्या आप मुझे रास्ते के बारे में बता सकते हैं?",
+        "predicted": "क्या आप मुझे रास्ते के बारे में बता सकते है?",
+        "category": "Incorrect Matras / Diacritics",
+        "explanation": "Consonants matched accurately, but vowel matras or nasalization signs differed.",
+        "suggestion": "Devanagari post-processing dictionary alignment and spell-check normalization."
+      },
+      {
+        "id": "TC15",
+        "input": "yeh train platform number kitne par aayegi?",
+        "expected": "यह ट्रेन प्लेटफॉर्म नंबर कितने पर आएगी?",
+        "predicted": "यह ट्रेन पलतफोरम नुमबेर कितने पर आयेगि?",
+        "category": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      {
+        "id": "TC16",
+        "input": "kya aapne homework complete kar liya?",
+        "expected": "क्या आपने होमवर्क पूरा कर लिया?",
+        "predicted": "क्या आपने होमेवोरक कोमपलेते कर लिया?",
+        "category": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      {
+        "id": "TC17",
+        "input": "kripya darwaza band kar dijiye.",
+        "expected": "कृपया दरवाज़ा बंद कर दीजिए।",
+        "predicted": "कृपया दरवाज़ा बंद कर दीजिए ।",
+        "category": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      }
+    ]
+  },
+  "detailed_results": [
+    {
+      "id": "TC01",
+      "category": "Simple words",
+      "input_hinglish": "namaste",
+      "reference_hindi": "नमस्ते",
+      "predicted_hindi": "नमस्ते",
+      "improved_hindi": "नमस्ते।",
+      "reference_english": "Greetings / Hello",
+      "predicted_english": "Greetings / Hello.",
+      "cer": 0.0,
+      "word_accuracy": 100.0,
+      "wer": 0.0,
+      "bleu": 59.46,
+      "chrf": 98.4,
+      "diagnosis": {
+        "category": "CORRECT",
+        "explanation": "Perfect match with reference."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC02",
+      "category": "Simple words",
+      "input_hinglish": "shukriya",
+      "reference_hindi": "शुक्रिया",
+      "predicted_hindi": "शुक्रिया",
+      "improved_hindi": "शुक्रिया।",
+      "reference_english": "Thank you",
+      "predicted_english": "Thank you.",
+      "cer": 0.0,
+      "word_accuracy": 100.0,
+      "wer": 0.0,
+      "bleu": 55.03,
+      "chrf": 96.17,
+      "diagnosis": {
+        "category": "CORRECT",
+        "explanation": "Perfect match with reference."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC03",
+      "category": "Simple words",
+      "input_hinglish": "dhanyawad",
+      "reference_hindi": "धन्यवाद",
+      "predicted_hindi": "धन्यवाद",
+      "improved_hindi": "धन्यवाद।",
+      "reference_english": "Thank you",
+      "predicted_english": "Thank you very much.",
+      "cer": 0.0,
+      "word_accuracy": 100.0,
+      "wer": 0.0,
+      "bleu": 21.36,
+      "chrf": 74.64,
+      "diagnosis": {
+        "category": "CORRECT",
+        "explanation": "Perfect match with reference."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC04",
+      "category": "Simple words",
+      "input_hinglish": "swagat",
+      "reference_hindi": "स्वागत",
+      "predicted_hindi": "स्वागत",
+      "improved_hindi": "स्वागत।",
+      "reference_english": "Welcome",
+      "predicted_english": "Welcome.",
+      "cer": 0.0,
+      "word_accuracy": 100.0,
+      "wer": 0.0,
+      "bleu": 50.0,
+      "chrf": 95.15,
+      "diagnosis": {
+        "category": "CORRECT",
+        "explanation": "Perfect match with reference."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC05",
+      "category": "Short sentences",
+      "input_hinglish": "aap kaise ho?",
+      "reference_hindi": "आप कैसे हो?",
+      "predicted_hindi": "आप कैसे हो?",
+      "improved_hindi": "आप कैसे हो?",
+      "reference_english": "How are you?",
+      "predicted_english": "How are you?",
+      "cer": 0.0,
+      "word_accuracy": 100.0,
+      "wer": 0.0,
+      "bleu": 100.0,
+      "chrf": 100.0,
+      "diagnosis": {
+        "category": "CORRECT",
+        "explanation": "Perfect match with reference."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC06",
+      "category": "Short sentences",
+      "input_hinglish": "mai theek hu.",
+      "reference_hindi": "मैं ठीक हूँ।",
+      "predicted_hindi": "मैं ठीक हूँ ।",
+      "improved_hindi": "मैं ठीक हूँ ।",
+      "reference_english": "I am fine.",
+      "predicted_english": "I am fine.",
+      "cer": 0.0833,
+      "word_accuracy": 66.67,
+      "wer": 0.6667,
+      "bleu": 100.0,
+      "chrf": 100.0,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC07",
+      "category": "Short sentences",
+      "input_hinglish": "aaj mausam achha hai.",
+      "reference_hindi": "आज मौसम अच्छा है।",
+      "predicted_hindi": "आज मौसम अच्छा है ।",
+      "improved_hindi": "आज मौसम अच्छा है ।",
+      "reference_english": "The weather is pleasant today.",
+      "predicted_english": "The weather is pleasant today.",
+      "cer": 0.0588,
+      "word_accuracy": 75.0,
+      "wer": 0.5,
+      "bleu": 100.0,
+      "chrf": 100.0,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC08",
+      "category": "Short sentences",
+      "input_hinglish": "kya chal raha hai?",
+      "reference_hindi": "क्या चल रहा है?",
+      "predicted_hindi": "क्या चल रहा है?",
+      "improved_hindi": "क्या चल रहा है?",
+      "reference_english": "What is going on?",
+      "predicted_english": "What is going on?",
+      "cer": 0.0,
+      "word_accuracy": 100.0,
+      "wer": 0.0,
+      "bleu": 100.0,
+      "chrf": 100.0,
+      "diagnosis": {
+        "category": "CORRECT",
+        "explanation": "Perfect match with reference."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC09",
+      "category": "Long sentences",
+      "input_hinglish": "hum artificial intelligence aur natural language processing ka use karke ek smart writing assistant bana rahe hai.",
+      "reference_hindi": "हम आर्टिफिशियल इंटेलिजेंस और नेचुरल लैंग्वेज प्रोसेसिंग का उपयोग करके एक स्मार्ट राइटिंग असिस्टेंट बना रहे हैं।",
+      "predicted_hindi": "हम अरतिफिकिaल इंतेललिगेंस और नतुरल लंगुaगे परोकेससिंग का उसे करके एक समरत वरितिंग अससिसतंत बना रहे है ।",
+      "improved_hindi": "हम अरतिफिकिaल इंतेललिगेंस और नतुरल लंगुaगे परोकेससिंग का उसे करके एक समरत वरितिंग अससिसतंत बना रहे है ।",
+      "reference_english": "We are building a smart writing assistant using artificial intelligence and natural language processing.",
+      "predicted_english": "We अरतिफिकिaल इंतेललिगेंस and नतुरल लंगुaगे परोकेससिंग of उसे करके एक समरत वरितिंग अससिसतंत बना रहे is.",
+      "cer": 0.3243,
+      "word_accuracy": 41.18,
+      "wer": 0.6471,
+      "bleu": 2.83,
+      "chrf": 3.15,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC10",
+      "category": "Long sentences",
+      "input_hinglish": "agar aap kal samay par aayenge toh hum milkar is project ki report complete kar lenge.",
+      "reference_hindi": "अगर आप कल समय पर आएँगे तो हम मिलकर इस प्रोजेक्ट की रिपोर्ट पूरी कर लेंगे।",
+      "predicted_hindi": "अगर आप कल समय पर आएँगे तो हम मिलकर इस प्रोजेक्ट की रिपोर्ट कोमपलेते कर लेंगे ।",
+      "improved_hindi": "अगर आप कल समय पर आएँगे तो हम मिलकर इस प्रोजेक्ट की रिपोर्ट कोमपलेते कर लेंगे ।",
+      "reference_english": "If you arrive on time tomorrow, we will complete this project report together.",
+      "predicted_english": "अगर you tomorrow time at / on आएँगे तो we मिलकर इस प्रोजेक्ट of रिपोर्ट कोमपलेते कर लेंगे.",
+      "cer": 0.1096,
+      "word_accuracy": 87.5,
+      "wer": 0.1875,
+      "bleu": 3.17,
+      "chrf": 15.15,
+      "diagnosis": {
+        "category_key": "ENGLISH_TRANSLITERATION",
+        "category_name": "English Words Incorrectly Transliterated",
+        "explanation": "Input contains English loan words that may have undergone phonetic conversion.",
+        "suggestion": "Entity extraction and language identification (LID) filter for English loanwords."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC11",
+      "category": "Long sentences",
+      "input_hinglish": "pichle hafte hamare college me ek national technical symposium organise kiya gaya tha jisme bohot se students ne participate kiya.",
+      "reference_hindi": "पिछले हफ्ते हमारे कॉलेज में एक राष्ट्रीय तकनीकी संगोष्ठी आयोजित की गई थी जिसमें बहुत से छात्रों ने भाग लिया।",
+      "predicted_hindi": "पिछले हफ्ते हमारे कॉलेज में एक नतिoनल तेचनिकल सयमपोसिuम ओरगनिसे किया गया था जिसमे बहुत से सतुदेंतस ने परतिकिपते किया ।",
+      "improved_hindi": "पिछले हफ्ते हमारे कॉलेज में एक नतिoनल तेचनिकल सयमपोसिuम ओरगनिसे किया गया था जिसमे बहुत से सतुदेंतस ने परतिकिपते किया ।",
+      "reference_english": "A national technical symposium was organized in our college last week in which many students participated.",
+      "predicted_english": "पिछले हफ्ते हमारे college in एक नतिoनल तेचनिकल सयमपोसिuम ओरगनिसे किया गया was जिसमे very from सतुदेंतस ने परतिकिपते किया.",
+      "cer": 0.4722,
+      "word_accuracy": 45.0,
+      "wer": 0.6,
+      "bleu": 2.57,
+      "chrf": 8.16,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC12",
+      "category": "Long sentences",
+      "input_hinglish": "bharat me vibhinn bhashaye boli jaati hai aur unhe digital platform par prastut karna ek mahatvapurna kadam hai.",
+      "reference_hindi": "भारत में विभिन्न भाषाएं बोली जाती हैं और उन्हें डिजिटल प्लेटफॉर्म पर प्रस्तुत करना एक महत्वपूर्ण कदम है।",
+      "predicted_hindi": "भारत में विभिन्न भाषाएं बोली जाती है और उन्हें दिगितल पलतफोरम पर प्रस्तुत करना एक महत्वपूर्ण कदम है ।",
+      "improved_hindi": "भारत में विभिन्न भाषाएं बोली जाती है और उन्हें दिगितल पलतफोरम पर प्रस्तुत करना एक महत्वपूर्ण कदम है ।",
+      "reference_english": "Different languages are spoken in India and presenting them on a digital platform is an important step.",
+      "predicted_english": "भारत in विभिन्न भाषाएं बोली जाती is and उन्हें दिगितल पलतफोरम at / on प्रस्तुत to do एक महत्वपूर्ण कदम is.",
+      "cer": 0.0962,
+      "word_accuracy": 77.78,
+      "wer": 0.2778,
+      "bleu": 2.58,
+      "chrf": 5.6,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC13",
+      "category": "Questions",
+      "input_hinglish": "kya aap mujhe raste ke baare me bata sakte hai?",
+      "reference_hindi": "क्या आप मुझे रास्ते के बारे में बता सकते हैं?",
+      "predicted_hindi": "क्या आप मुझे रास्ते के बारे में बता सकते है?",
+      "improved_hindi": "क्या आप मुझे रास्ते के बारे में बता सकते है?",
+      "reference_english": "Can you tell me about the directions?",
+      "predicted_english": "क्या you i रास्ते of बारे in बता सकते is.",
+      "cer": 0.0222,
+      "word_accuracy": 90.0,
+      "wer": 0.1,
+      "bleu": 3.75,
+      "chrf": 5.95,
+      "diagnosis": {
+        "category_key": "INCORRECT_MATRA",
+        "category_name": "Incorrect Matras / Diacritics",
+        "explanation": "Consonants matched accurately, but vowel matras or nasalization signs differed.",
+        "suggestion": "Devanagari post-processing dictionary alignment and spell-check normalization."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC14",
+      "category": "Questions",
+      "input_hinglish": "kal ki class kitne baje shuru hogi?",
+      "reference_hindi": "कल की क्लास कितने बजे शुरू होगी?",
+      "predicted_hindi": "कल की क्लास कितने बजे शुरू होगी?",
+      "improved_hindi": "कल की क्लास कितने बजे शुरू होगी?",
+      "reference_english": "What time will tomorrow's class start?",
+      "predicted_english": "What time will tomorrow's class start?",
+      "cer": 0.0,
+      "word_accuracy": 100.0,
+      "wer": 0.0,
+      "bleu": 100.0,
+      "chrf": 100.0,
+      "diagnosis": {
+        "category": "CORRECT",
+        "explanation": "Perfect match with reference."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC15",
+      "category": "Questions",
+      "input_hinglish": "yeh train platform number kitne par aayegi?",
+      "reference_hindi": "यह ट्रेन प्लेटफॉर्म नंबर कितने पर आएगी?",
+      "predicted_hindi": "यह ट्रेन पलतफोरम नुमबेर कितने पर आयेगि?",
+      "improved_hindi": "यह ट्रेन पलतफोरम नुमबेर कितने पर आयेगि?",
+      "reference_english": "On which platform number will this train arrive?",
+      "predicted_english": "यह ट्रेन पलतफोरम नुमबेर कितने at / on आयेगि.",
+      "cer": 0.2821,
+      "word_accuracy": 57.14,
+      "wer": 0.4286,
+      "bleu": 0.0,
+      "chrf": 2.09,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC16",
+      "category": "Questions",
+      "input_hinglish": "kya aapne homework complete kar liya?",
+      "reference_hindi": "क्या आपने होमवर्क पूरा कर लिया?",
+      "predicted_hindi": "क्या आपने होमेवोरक कोमपलेते कर लिया?",
+      "improved_hindi": "क्या आपने होमेवोरक कोमपलेते कर लिया?",
+      "reference_english": "Have you completed your homework?",
+      "predicted_english": "क्या आपने होमेवोरक कोमपलेते कर लिया.",
+      "cer": 0.3226,
+      "word_accuracy": 66.67,
+      "wer": 0.3333,
+      "bleu": 0.0,
+      "chrf": 0.0,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC17",
+      "category": "Commands and requests",
+      "input_hinglish": "kripya darwaza band kar dijiye.",
+      "reference_hindi": "कृपया दरवाज़ा बंद कर दीजिए।",
+      "predicted_hindi": "कृपया दरवाज़ा बंद कर दीजिए ।",
+      "improved_hindi": "कृपया दरवाज़ा बंद कर दीजिए ।",
+      "reference_english": "Please close the door.",
+      "predicted_english": "Please close the door.",
+      "cer": 0.037,
+      "word_accuracy": 80.0,
+      "wer": 0.4,
+      "bleu": 100.0,
+      "chrf": 100.0,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC18",
+      "category": "Commands and requests",
+      "input_hinglish": "mujhe ek glass paani do.",
+      "reference_hindi": "मुझे एक गिलास पानी दो।",
+      "predicted_hindi": "मुझे एक गलसस पानी दो ।",
+      "improved_hindi": "मुझे एक गलसस पानी दो ।",
+      "reference_english": "Give me a glass of water.",
+      "predicted_english": "I एक गलसस water दो.",
+      "cer": 0.1364,
+      "word_accuracy": 60.0,
+      "wer": 0.6,
+      "bleu": 8.17,
+      "chrf": 15.1,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC19",
+      "category": "Commands and requests",
+      "input_hinglish": "jaldi aao aur meri madad karo.",
+      "reference_hindi": "जल्दी आओ और मेरी मदद करो।",
+      "predicted_hindi": "जल्दी आओ और मेरी मदद करो ।",
+      "improved_hindi": "जल्दी आओ और मेरी मदद करो ।",
+      "reference_english": "Come quickly and help me.",
+      "predicted_english": "Come quickly and help me.",
+      "cer": 0.04,
+      "word_accuracy": 83.33,
+      "wer": 0.3333,
+      "bleu": 100.0,
+      "chrf": 100.0,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC20",
+      "category": "Commands and requests",
+      "input_hinglish": "apna mobile silent mode par rakhein.",
+      "reference_hindi": "अपना मोबाइल साइलेंट मोड पर रखें।",
+      "predicted_hindi": "अपना मोबाइल सिलेंत मोदे पर रखें ।",
+      "improved_hindi": "अपना मोबाइल सिलेंत मोदे पर रखें ।",
+      "reference_english": "Keep your mobile on silent mode.",
+      "predicted_english": "अपना मोबाइल सिलेंत मोदे at / on रखें.",
+      "cer": 0.1875,
+      "word_accuracy": 50.0,
+      "wer": 0.6667,
+      "bleu": 5.67,
+      "chrf": 3.04,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC21",
+      "category": "Conversational Hindi",
+      "input_hinglish": "bhai kal sham ko chai peene chalte hai.",
+      "reference_hindi": "भाई कल शाम को चाय पीने चलते हैं।",
+      "predicted_hindi": "भाई कल शाम को चाय पीने चलते है ।",
+      "improved_hindi": "भाई कल शाम को चाय पीने चलते है ।",
+      "reference_english": "Brother, let's go for tea tomorrow evening.",
+      "predicted_english": "भाई tomorrow in the evening to tea पीने चलते is.",
+      "cer": 0.0312,
+      "word_accuracy": 87.5,
+      "wer": 0.25,
+      "bleu": 5.3,
+      "chrf": 35.93,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC22",
+      "category": "Conversational Hindi",
+      "input_hinglish": "arre yaar sab kuch theek ho jayega chinta mat karo.",
+      "reference_hindi": "अरे यार सब कुछ ठीक हो जाएगा चिंता मत करो।",
+      "predicted_hindi": "अरे यार सब कुछ ठीक हो जयेगा चिंता मत करो ।",
+      "improved_hindi": "अरे यार सब कुछ ठीक हो जयेगा चिंता मत करो ।",
+      "reference_english": "Oh friend, everything will be fine, do not worry.",
+      "predicted_english": "अरे यार सब कुछ ठीक हो जयेगा चिंता मत करो.",
+      "cer": 0.0732,
+      "word_accuracy": 80.0,
+      "wer": 0.3,
+      "bleu": 3.42,
+      "chrf": 0.43,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC23",
+      "category": "Conversational Hindi",
+      "input_hinglish": "meri baat dhyan se suno aur samjho.",
+      "reference_hindi": "मेरी बात ध्यान से सुनो और समझो।",
+      "predicted_hindi": "मेरी बात ध्यान से सुनो और समझो ।",
+      "improved_hindi": "मेरी बात ध्यान से सुनो और समझो ।",
+      "reference_english": "Listen to me carefully and understand.",
+      "predicted_english": "Listen to me carefully and understand.",
+      "cer": 0.0323,
+      "word_accuracy": 85.71,
+      "wer": 0.2857,
+      "bleu": 100.0,
+      "chrf": 100.0,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC24",
+      "category": "Conversational Hindi",
+      "input_hinglish": "aaj ka din bohot thakane wala tha.",
+      "reference_hindi": "आज का दिन बहुत थकाने वाला था।",
+      "predicted_hindi": "आज का दिन बहुत थकाने वाला था ।",
+      "improved_hindi": "आज का दिन बहुत थकाने वाला था ।",
+      "reference_english": "Today was a very exhausting day.",
+      "predicted_english": "Today was a very exhausting day.",
+      "cer": 0.0345,
+      "word_accuracy": 85.71,
+      "wer": 0.2857,
+      "bleu": 100.0,
+      "chrf": 100.0,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC25",
+      "category": "Educational expressions",
+      "input_hinglish": "is theorem ka proof exam me aane ki sambhavna hai.",
+      "reference_hindi": "इस प्रमेय का प्रमाण परीक्षा में आने की संभावना है।",
+      "predicted_hindi": "इस थेoरेम का परूफ एग्जाम में आने की संभावना है ।",
+      "improved_hindi": "इस थेoरेम का परूफ एग्जाम में आने की संभावना है ।",
+      "reference_english": "There is a possibility of this theorem's proof appearing in the examination.",
+      "predicted_english": "इस थेoरेम of परूफ एग्जाम in आने of संभावना is.",
+      "cer": 0.32,
+      "word_accuracy": 60.0,
+      "wer": 0.5,
+      "bleu": 4.42,
+      "chrf": 3.95,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC26",
+      "category": "Educational expressions",
+      "input_hinglish": "vidyarthi library me baithkar padhai kar rahe hai.",
+      "reference_hindi": "विद्यार्थी लाइब्रेरी में बैठकर पढ़ाई कर रहे हैं।",
+      "predicted_hindi": "विद्यार्थी लिबररय में बैथकर पढ़ाई कर रहे है ।",
+      "improved_hindi": "विद्यार्थी लिबररय में बैथकर पढ़ाई कर रहे है ।",
+      "reference_english": "Students are studying sitting in the library.",
+      "predicted_english": "विद्यार्थी लिबररय in बैथकर पढ़ाई कर रहे is.",
+      "cer": 0.1458,
+      "word_accuracy": 62.5,
+      "wer": 0.5,
+      "bleu": 5.67,
+      "chrf": 2.62,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC27",
+      "category": "Educational expressions",
+      "input_hinglish": "professor ne research paper submit karne ke nirdesh diye hai.",
+      "reference_hindi": "प्रोफेसर ने रिसर्च पेपर जमा करने के निर्देश दिए हैं।",
+      "predicted_hindi": "परोफेससोर ने रेसेaरच पपेर सुबमित करने के निर्देश दिए है ।",
+      "improved_hindi": "परोफेससोर ने रेसेaरच पपेर सुबमित करने के निर्देश दिए है ।",
+      "reference_english": "The professor has given instructions to submit the research paper.",
+      "predicted_english": "परोफेससोर ने रेसेaरच पपेर सुबमित करने of निर्देश दिए is.",
+      "cer": 0.2885,
+      "word_accuracy": 50.0,
+      "wer": 0.6,
+      "bleu": 3.75,
+      "chrf": 2.13,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC28",
+      "category": "Educational expressions",
+      "input_hinglish": "kya aapne semester ka syllabus download kiya?",
+      "reference_hindi": "क्या आपने सेमेस्टर का सिलेबस डाउनलोड किया?",
+      "predicted_hindi": "क्या आपने सेमेसतेर का सयललबुस दोवनलोaद किया?",
+      "improved_hindi": "क्या आपने सेमेसतेर का सयललबुस दोवनलोaद किया?",
+      "reference_english": "Did you download the semester syllabus?",
+      "predicted_english": "क्या आपने सेमेसतेर of सयललबुस दोवनलोaद किया.",
+      "cer": 0.2381,
+      "word_accuracy": 57.14,
+      "wer": 0.4286,
+      "bleu": 0.0,
+      "chrf": 0.96,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC29",
+      "category": "Mixed Hindi-English expressions",
+      "input_hinglish": "heavy traffic ki wajah se mai office late pahuncha.",
+      "reference_hindi": "भारी ट्रैफिक की वजह से मैं ऑफिस लेट पहुँचा।",
+      "predicted_hindi": "हेaवय त्रफफिक की वजह से मैं ऑफिस लते पहुँचा ।",
+      "improved_hindi": "हेaवय त्रफफिक की वजह से मैं ऑफिस लते पहुँचा ।",
+      "reference_english": "Due to heavy traffic, I reached the office late.",
+      "predicted_english": "हेaवय त्रफफिक of वजह from i the office लते पहुँचा.",
+      "cer": 0.2326,
+      "word_accuracy": 55.56,
+      "wer": 0.5556,
+      "bleu": 8.3,
+      "chrf": 19.97,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC30",
+      "category": "Mixed Hindi-English expressions",
+      "input_hinglish": "mujhe code debug karne me error aa raha hai.",
+      "reference_hindi": "मुझे कोड डीबग करने में एरर आ रहा है।",
+      "predicted_hindi": "मुझे कोदे देबुग करने में एरर आ रहा है ।",
+      "improved_hindi": "मुझे कोदे देबुग करने में एरर आ रहा है ।",
+      "reference_english": "I am getting an error while debugging the code.",
+      "predicted_english": "I कोदे देबुग करने in एरर आ रहा is.",
+      "cer": 0.1667,
+      "word_accuracy": 66.67,
+      "wer": 0.4444,
+      "bleu": 4.99,
+      "chrf": 2.76,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC31",
+      "category": "Mixed Hindi-English expressions",
+      "input_hinglish": "online shopping karte waqt discount coupon apply karna mat bhoolna.",
+      "reference_hindi": "ऑनलाइन शॉपिंग करते वक्त डिस्काउंट कूपन लगाना मत भूलना।",
+      "predicted_hindi": "ओनलिने शोपपिंग करते वक्त दिसकोuंत कोuपों अपपलय करना मत भूलना ।",
+      "improved_hindi": "ओनलिने शोपपिंग करते वक्त दिसकोuंत कोuपों अपपलय करना मत भूलना ।",
+      "reference_english": "Do not forget to apply the discount coupon while online shopping.",
+      "predicted_english": "ओनलिने शोपपिंग करते वक्त दिसकोuंत कोuपों अपपलय to do मत भूलना.",
+      "cer": 0.4259,
+      "word_accuracy": 33.33,
+      "wer": 0.8889,
+      "bleu": 4.03,
+      "chrf": 2.46,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC32",
+      "category": "Mixed Hindi-English expressions",
+      "input_hinglish": "zoom meeting ka link email par share kar diya gaya hai.",
+      "reference_hindi": "ज़ूम मीटिंग का लिंक ईमेल पर शेयर कर दिया गया है।",
+      "predicted_hindi": "ज़ूम मीटिंग का लिंक ईमेल पर शरे कर दिया गया है ।",
+      "improved_hindi": "ज़ूम मीटिंग का लिंक ईमेल पर शरे कर दिया गया है ।",
+      "reference_english": "The Zoom meeting link has been shared via email.",
+      "predicted_english": "ज़ूम मीटिंग of लिंक ईमेल at / on शरे कर दिया गया is.",
+      "cer": 0.0833,
+      "word_accuracy": 81.82,
+      "wer": 0.2727,
+      "bleu": 2.84,
+      "chrf": 3.33,
+      "diagnosis": {
+        "category_key": "ENGLISH_TRANSLITERATION",
+        "category_name": "English Words Incorrectly Transliterated",
+        "explanation": "Input contains English loan words that may have undergone phonetic conversion.",
+        "suggestion": "Entity extraction and language identification (LID) filter for English loanwords."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC33",
+      "category": "Ambiguous Roman spellings",
+      "input_hinglish": "mai kal sham ko market jaunga aur kuch naye kapde khareedunga",
+      "reference_hindi": "मैं कल शाम को मार्केट जाऊँगा और कुछ नए कपड़े खरीदूँगा",
+      "predicted_hindi": "मैं कल शाम को मार्केट जाऊँगा और कुछ नए कपड़े खरीदूँगा",
+      "improved_hindi": "मैं कल शाम को मार्केट जाऊँगा और कुछ नए कपड़े खरीदूँगा।",
+      "reference_english": "I will go to the market tomorrow evening and buy some new clothes.",
+      "predicted_english": "I will go to the market tomorrow evening and buy some new clothes.",
+      "cer": 0.0,
+      "word_accuracy": 100.0,
+      "wer": 0.0,
+      "bleu": 100.0,
+      "chrf": 100.0,
+      "diagnosis": {
+        "category": "CORRECT",
+        "explanation": "Perfect match with reference."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC34",
+      "category": "Ambiguous Roman spellings",
+      "input_hinglish": "unka behaviour bohot ajeeb tha.",
+      "reference_hindi": "उनका व्यवहार बहुत अजीब था।",
+      "predicted_hindi": "उनका बेहविouर बहुत अजीब था ।",
+      "improved_hindi": "उनका बेहविouर बहुत अजीब था ।",
+      "reference_english": "Their behavior was very strange.",
+      "predicted_english": "उनका बेहविouर very अजीब was.",
+      "cer": 0.2692,
+      "word_accuracy": 60.0,
+      "wer": 0.6,
+      "bleu": 10.68,
+      "chrf": 11.37,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC35",
+      "category": "Ambiguous Roman spellings",
+      "input_hinglish": "mujhe lagta hai ki yeh sahi faisla hai.",
+      "reference_hindi": "मुझे लगता है कि यह सही फैसला है।",
+      "predicted_hindi": "मुझे लगता है की यह सही फैसला है ।",
+      "improved_hindi": "मुझे लगता है की यह सही फैसला है ।",
+      "reference_english": "I feel that this is the right decision.",
+      "predicted_english": "I लगता is of यह सही फैसला is.",
+      "cer": 0.0625,
+      "word_accuracy": 75.0,
+      "wer": 0.375,
+      "bleu": 6.27,
+      "chrf": 5.59,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC36",
+      "category": "Ambiguous Roman spellings",
+      "input_hinglish": "kabhi kabhi hum galat samajh lete hai.",
+      "reference_hindi": "कभी-कभी हम गलत समझ लेते हैं।",
+      "predicted_hindi": "कभी कभी हम गलत समझ लेते है ।",
+      "improved_hindi": "कभी कभी हम गलत समझ लेते है ।",
+      "reference_english": "Sometimes we misunderstand.",
+      "predicted_english": "कभी कभी we गलत समझ लेते is.",
+      "cer": 0.0714,
+      "word_accuracy": 66.67,
+      "wer": 0.6667,
+      "bleu": 6.57,
+      "chrf": 4.88,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC37",
+      "category": "Different punctuation and number patterns",
+      "input_hinglish": "aaj 15 august 2026 hai, aur timing 10:30 AM hai!",
+      "reference_hindi": "आज 15 अगस्त 2026 है, और समय 10:30 AM है!",
+      "predicted_hindi": "आज 15 औगुसत 2026 है, और तिमिंग 10:30 अम है!",
+      "improved_hindi": "आज 15 औगुसत 2026 है, और तिमिंग 10:30 अम है!",
+      "reference_english": "Today is August 15, 2026, and the time is 10:30 AM!",
+      "predicted_english": "Today 15 औगुसत 2026 is and तिमिंग 10:30 अम is.",
+      "cer": 0.25,
+      "word_accuracy": 70.0,
+      "wer": 0.3,
+      "bleu": 12.01,
+      "chrf": 23.43,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC38",
+      "category": "Different punctuation and number patterns",
+      "input_hinglish": "total bill 1,250 rupees hua (GST include karke).",
+      "reference_hindi": "कुल बिल 1,250 रुपये हुआ (जीएसटी शामिल करके)।",
+      "predicted_hindi": "तोतल बिल 1,250 रुपये हुआ (गसत इंकलुदे करके) ।",
+      "improved_hindi": "तोतल बिल 1,250 रुपये हुआ (गसत इंकलुदे करके) ।",
+      "reference_english": "The total bill is 1,250 rupees (including GST).",
+      "predicted_english": "तोतल बिल 1,250 रुपये हुआ (गसत इंकलुदे करके).",
+      "cer": 0.3636,
+      "word_accuracy": 50.0,
+      "wer": 0.625,
+      "bleu": 8.91,
+      "chrf": 8.28,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC39",
+      "category": "Different punctuation and number patterns",
+      "input_hinglish": "kya room 402 me 3 chairs aur 2 tables hai?",
+      "reference_hindi": "क्या रूम 402 में 3 कुर्सियाँ और 2 टेबल हैं?",
+      "predicted_hindi": "क्या रूम 402 में 3 चैरस और 2 तबलेस है?",
+      "improved_hindi": "क्या रूम 402 में 3 चैरस और 2 तबलेस है?",
+      "reference_english": "Are there 3 chairs and 2 tables in room 402?",
+      "predicted_english": "क्या the room 402 in 3 चैरस and 2 तबलेस is.",
+      "cer": 0.2791,
+      "word_accuracy": 70.0,
+      "wer": 0.3,
+      "bleu": 10.6,
+      "chrf": 26.13,
+      "diagnosis": {
+        "category_key": "AMBIGUOUS_SPELLING",
+        "category_name": "Ambiguous Roman Spellings",
+        "explanation": "Phonetic mapping ambiguity between Roman orthography and Devanagari representation.",
+        "suggestion": "Incorporate n-gram character language model or context-aware Aksharantar beam search."
+      },
+      "status": "evaluated"
+    },
+    {
+      "id": "TC40",
+      "category": "Different punctuation and number patterns",
+      "input_hinglish": "score 98.5% tha; yeh sach me anokha hai!",
+      "reference_hindi": "स्कोर 98.5% था; यह सच में अनोखा है!",
+      "predicted_hindi": "सकोरे 98.5% था; यह सच में अनोखा है!",
+      "improved_hindi": "सकोरे 98.5% था; यह सच में अनोखा है!",
+      "reference_english": "The score was 98.5%; this is truly remarkable!",
+      "predicted_english": "सकोरे 98.5% था; यह सच in अनोखा is.",
+      "cer": 0.0571,
+      "word_accuracy": 87.5,
+      "wer": 0.125,
+      "bleu": 8.91,
+      "chrf": 9.39,
+      "diagnosis": {
+        "category_key": "INCORRECT_MATRA",
+        "category_name": "Incorrect Matras / Diacritics",
+        "explanation": "Consonants matched accurately, but vowel matras or nasalization signs differed.",
+        "suggestion": "Devanagari post-processing dictionary alignment and spell-check normalization."
+      },
+      "status": "evaluated"
+    }
+  ]
+}
