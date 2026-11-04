@@ -346,5 +346,3 @@ For evaluation viva and laboratory demonstrations, follow this sequence:
 4. **Aksharantar Benchmark Dataset:** [Hugging Face Datasets / AI4Bharat](https://github.com/AI4Bharat/IndianNLP-Transliteration)
 
 ---
-
-**CS3235 Individual Undergraduate Mini Project • CIE3 Lab Assessment • November 2026**
