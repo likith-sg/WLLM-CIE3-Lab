@@ -1,30 +1,34 @@
 # Hinglish Smart Writing Assistant
 
-[![Python 3.10](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.14-ee4c2c.svg)](https://pytorch.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.65-FF4B4B.svg)](https://streamlit.io/)
-[![AI4Bharat](https://img.shields.io/badge/AI4Bharat-IndicXlit%20%7C%20IndicTrans2-orange.svg)](https://ai4bharat.iitm.ac.in/)
-[![BharatGen](https://img.shields.io/badge/BharatGen-Param--1-green.svg)](https://huggingface.co/bharatgenai)
-[![Assessment](https://img.shields.io/badge/Course-CS3235%20CIE3%20Mini%20Project-purple.svg)]()
+**Student Name:** Likith S G  
+**USN / Student ID:** 1RVU23CSE236  
+**Course:** CS3235 - Natural Language Processing & Large Language Models  
+**Assessment:** CIE3 Lab Mini Project  
+**Repository Name:** WLLM-CIE3-Lab  
 
-> An autonomous end-to-end Indian language processing system that converts colloquial Roman-script Hinglish into native Devanagari Hindi, enhances grammatical phrasing and readability via generative language models, and translates the output into natural English.
-
----
-
-## 1. Project Information
-
-- **Course:** CS3235 (Natural Language Processing & Large Language Models)
-- **Assessment:** CIE3 Lab Mini Project
-- **Project Title:** Hinglish Smart Writing Assistant: An AI-Powered Indian Language Transliteration, Writing Enhancement and Translation System
-- **Student Developer:** Likith S G
-- **Target Hardware:** Windows 11, NVIDIA GeForce RTX 3050 Laptop GPU (4 GB VRAM)
-- **Submission Date:** November 6, 2026, 10:00 AM
+This repository contains the complete implementation, quantitative evaluation, and technical documentation for the **Hinglish Smart Writing Assistant**. The system converts colloquial Roman-script Hinglish into native Devanagari Hindi using AI4Bharat IndicXlit, refines grammatical phrasing and style using BharatGen Param-1, and translates the polished Hindi output into natural English using AI4Bharat IndicTrans2. The project includes a multi-page Streamlit web studio, a 40-case empirical evaluation benchmark derived from Aksharantar, and an automated test suite.
 
 ---
 
-## 2. Problem Statement and Motivation
+## Table of Contents
+- [Project Overview](#project-overview)
+- [System Architecture](#system-architecture)
+- [Models and Technology Stack](#models-and-technology-stack)
+- [Hardware Constraints and Memory Management](#hardware-constraints-and-memory-management)
+- [Repository Structure](#repository-structure)
+- [Installation and Setup](#installation-and-setup)
+- [Execution Commands](#execution-commands)
+- [Quantitative Evaluation and Benchmark Results](#quantitative-evaluation-and-benchmark-results)
+- [Failure Analysis and Diagnostic Taxonomy](#failure-analysis-and-diagnostic-taxonomy)
+- [Prompt Engineering Specification](#prompt-engineering-specification)
+- [Academic Demonstration Protocol](#academic-demonstration-protocol)
+- [References](#references)
 
-Over 500 million Indian citizens converse daily in Hindi. However, fewer than 10% utilize native Devanagari virtual keyboards due to the cognitive complexity of multi-layer Input Method Editor (IME) layouts on standard English QWERTY keyboards. Consequently, colloquial Roman-script Hinglish has become the default medium of digital correspondence across messaging platforms, social media, and academic discussions.
+---
+
+## Project Overview
+
+Over 500 million Indian citizens communicate daily in Hindi. However, fewer than 10% utilize native Devanagari virtual keyboards due to the complexity of multi-layer Input Method Editor (IME) layouts on standard English QWERTY keyboards. Consequently, colloquial Roman-script Hinglish has become the default medium of digital correspondence across messaging platforms, social media, and academic discussions.
 
 Despite its ubiquity, Roman Hinglish presents three fundamental linguistic challenges:
 
@@ -36,67 +40,77 @@ This system addresses these challenges through a unified multi-stage neural pipe
 
 ---
 
-## 3. System Architecture
+## System Architecture
+
+The end-to-end processing pipeline executes sequentially across three specialized neural components:
+
+```text
++---------------------------------------------------------------------------------+
+|                       HINGLISH SMART WRITING ASSISTANT                          |
+|                     End-to-End Neural Processing Pipeline                       |
++---------------------------------------------------------------------------------+
+                                         |
+                               [Roman Hinglish Input]
+                                         |
+                                         v
+               +---------------------------------------------------+
+               | 1. Transliteration (AI4Bharat IndicXlit)          |
+               |    Roman Script -> Native Devanagari Hindi        |
+               +---------------------------------------------------+
+                                         |
+                               [Devanagari Hindi]
+                                         |
+                                         v
+               +---------------------------------------------------+
+               | 2. Writing Enhancement (BharatGen Param-1)        |
+               |    Grammar Normalization & Phrasing Refinement    |
+               +---------------------------------------------------+
+                                         |
+                                [Polished Hindi]
+                                         |
+                                         v
+               +---------------------------------------------------+
+               | 3. Neural Translation (AI4Bharat IndicTrans2)     |
+               |    Native Hindi -> Idiomatic English              |
+               +---------------------------------------------------+
+                                         |
+                                         v
+                            [English Translation Output]
+```
 
 ```mermaid
 flowchart TD
-    A["User Input: Roman Hinglish"] --> B["Streamlit Studio Interface"]
-    B --> C["Pipeline Orchestration Service"]
-
-    subgraph Core_Pipeline ["Neural Processing Pipeline"]
-        C --> D["AI4Bharat IndicXlit<br/>Transliteration Engine"]
-        D --> E["Native Devanagari Hindi Text"]
-        E --> F["BharatGen Param-1<br/>Generative Polishing"]
-        F --> G["Enhanced Devanagari Hindi Text"]
-        G --> H["AI4Bharat IndicTrans2<br/>Neural Machine Translation"]
-        H --> I["Idiomatic English Output"]
-    end
-
-    subgraph Evaluation_Harness ["Quantitative Benchmark & Diagnostics"]
-        J[("Aksharantar Benchmark Dataset<br/>40 Curated Test Cases")] --> K["Evaluation Runner"]
-        K --> L["Metric Computation<br/>CER, Word Accuracy, BLEU, chrF"]
-        K --> M["Diagnostic Classification<br/>8-Category Error Taxonomy"]
-        L --> N["Interactive Evaluation Dashboard"]
-        M --> N
-    end
+    A[Roman Hinglish Input] --> B[AI4Bharat IndicXlit]
+    B --> C[Devanagari Hindi]
+    C --> D[BharatGen Param-1]
+    D --> E[Polished Hindi]
+    E --> F[AI4Bharat IndicTrans2]
+    F --> G[English Translation]
 ```
 
-### Execution Sequence
+### Pipeline Execution Stages
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor User as User
-    participant UI as Streamlit Studio
-    participant Xlit as IndicXlit Engine
-    participant GenAI as BharatGen Param-1
-    participant Trans as IndicTrans2 Engine
-
-    User->>UI: Enter Roman Hinglish ("mera naam likith hai aur mai bangalore me rehta hu")
-    UI->>Xlit: Request Transliteration
-    Xlit-->>UI: Return Devanagari ("मेरा नाम लिखित है और मैं बैंगलोर में रहता हूँ")
-    UI->>GenAI: Request Writing Enhancement
-    GenAI-->>UI: Return Polished Hindi ("मेरा नाम लिखित है और मैं बैंगलोर में रहता हूँ।")
-    UI->>Trans: Request Translation to English
-    Trans-->>UI: Return English ("My name is Likith and I live in Bangalore.")
-    UI-->>User: Display Multi-Stage Results & Comparison Grid
-```
+| Stage | Processing Module | Input Example | Linguistic Operation | Output Example |
+|:---:|:---|:---|:---|:---|
+| **1** | **AI4Bharat IndicXlit** | `Mujhe aaj office jana hai` | Neural-phonetic G2P transliteration to native script | `मुझे आज ऑफिस जाना है` |
+| **2** | **BharatGen Param-1** | `मुझे आज ऑफिस जाना है` | Grammatical correction, matra normalization, and punctuation | `मुझे आज ऑफिस जाना है।` |
+| **3** | **AI4Bharat IndicTrans2** | `मुझे आज ऑफिस जाना है।` | Neural machine translation (`hin_Deva` to `eng_Latn`) | `I have to go to the office today.` |
 
 ---
 
-## 4. Models and Technical Specifications
+## Models and Technology Stack
 
-| Component | Technology / Official Identifier | Parameter Count / Model Type | Architecture Role | Hardware Placement Strategy |
-| :--- | :--- | :--- | :--- | :--- |
-| **Transliteration** | `ai4bharat/indicxlit-en-indic-v1.0` | ~150M Seq2Seq / Aksharantar Engine | Roman Hinglish to Native Devanagari Hindi | CPU / GPU Lightweight (~120 MB memory) |
+| Component | Model / Identifier | Architecture & Parameters | Role in Pipeline | Hardware Allocation |
+|:---|:---|:---|:---|:---|
+| **Transliteration** | `ai4bharat/indicxlit-en-indic-v1.0` | ~150M Seq2Seq / Aksharantar Engine | Roman Hinglish to Native Devanagari Hindi | CPU / GPU Lightweight (~120 MB RAM) |
 | **Writing Enhancement** | `bharatgenai/Param-1-2.9B-Instruct` | 2.9B Bilingual Causal Transformer | Grammar correction, style polishing, readability | Sequential execution, CPU / 4-bit offload |
 | **Translation** | `ai4bharat/indictrans2-indic-en-dist-200M` | 200M Distilled Seq2Seq Transformer | Devanagari Hindi to English (`hin_Deva` to `eng_Latn`) | Float16 GPU / CPU inference (<0.8 GB footprint) |
-| **Evaluation Dataset** | AI4Bharat Aksharantar Benchmark | 40 Curated Linguistic Samples | Empirical testing across 10 categories | Offline verified ground-truth dataset |
+| **Benchmark Dataset** | Aksharantar Benchmark | 40 Curated Linguistic Samples | Empirical testing across 10 categories | Offline verified ground-truth dataset |
 | **User Interface** | Streamlit 1.65 | Multi-page Application | Responsive cards, clipboard integration, live metrics | Port 8501, local browser |
 
 ---
 
-## 5. Hardware Optimization and Memory Management
+## Hardware Constraints and Memory Management
 
 The target development and execution environment is an **NVIDIA GeForce RTX 3050 Laptop GPU with 4 GB VRAM**. Loading multiple large deep learning checkpoints simultaneously into 4 GB VRAM triggers CUDA Out of Memory (OOM) errors.
 
@@ -109,10 +123,10 @@ The system addresses this constraint via the following safeguards:
 
 ---
 
-## 6. Repository Structure
+## Repository Structure
 
 ```
-WLLM/
+WLLM-CIE3-Lab/
 ├── app.py                      # Application entrypoint (Home Page)
 ├── requirements.txt            # Python dependencies
 ├── README.md                   # Technical documentation
@@ -165,7 +179,7 @@ WLLM/
 
 ---
 
-## 7. Installation and Setup
+## Installation and Setup
 
 ### Prerequisites
 - Windows 10/11 64-bit
@@ -198,7 +212,7 @@ Copy-Item .env.example .env
 
 ---
 
-## 8. Execution and Verification
+## Execution Commands
 
 ### Launch the Web Application
 ```powershell
@@ -210,7 +224,7 @@ Access the application at `http://localhost:8501`.
 ```powershell
 .\.venv\Scripts\python.exe -m pytest -v
 ```
-All 15 unit and integration tests execute and pass in approximately 3 to 5 seconds.
+All 15 unit and integration tests execute and pass in approximately 2 to 4 seconds.
 
 ### Run Quantitative Evaluation Benchmark
 ```powershell
@@ -219,7 +233,7 @@ All 15 unit and integration tests execute and pass in approximately 3 to 5 secon
 
 ---
 
-## 9. Quantitative Evaluation Results
+## Quantitative Evaluation and Benchmark Results
 
 The system was evaluated against **40 curated test cases** derived from the official **AI4Bharat Aksharantar benchmark**, encompassing 10 communicative categories (4 test cases per category):
 
@@ -237,7 +251,7 @@ The system was evaluated against **40 curated test cases** derived from the offi
 ### Aggregate Benchmark Metrics
 
 | Evaluation Metric | Formulation / Methodology | Measured Score |
-| :--- | :--- | :--- |
+|:---|:---|:---:|
 | **Total Test Cases** | Aksharantar Curated Test Suite | **40 Cases** |
 | **Average Character Error Rate (CER)** | $\frac{S + I + D}{N_{\text{ref}}}$ (per-sample average) | **13.99%** |
 | **Corpus-Level CER** | $\frac{\sum \text{Distance}}{\sum N_{\text{ref}}}$ (corpus aggregate) | **18.73%** |
@@ -248,7 +262,7 @@ The system was evaluated against **40 curated test cases** derived from the offi
 ### Category-Wise Performance
 
 | Category | Cases | Average CER | Word Accuracy | Translation BLEU | Perfect Matches |
-| :--- | :---: | :---: | :---: | :---: | :---: |
+|:---|:---:|:---:|:---:|:---:|:---:|
 | **Simple words** | 4 | **0.00%** | **100.0%** | 35.4 | 4 / 4 (100%) |
 | **Short sentences** | 4 | 14.2% | 75.0% | 18.2 | 1 / 4 (25%) |
 | **Long sentences** | 4 | 22.8% | 68.4% | 11.5 | 0 / 4 (0%) |
@@ -262,12 +276,12 @@ The system was evaluated against **40 curated test cases** derived from the offi
 
 ---
 
-## 10. Failure Analysis and Diagnostic Taxonomy
+## Failure Analysis and Diagnostic Taxonomy
 
 The application classifies errors into 8 diagnostic categories defined in the assessment guidelines:
 
 | Category Key | Category Name | Description | Example Input and Discrepancy | Remediation Strategy |
-| :--- | :--- | :--- | :--- | :--- |
+|:---|:---|:---|:---|:---|
 | `AMBIGUOUS_SPELLING` | **Ambiguous Roman Spellings** | Inconsistent phonetic orthography (*shuru* vs. *suru*, *hai* vs. *he*). | `shuru` to `शुरू` vs. `सुरु` | Context-aware beam search with character language models. |
 | `INCORRECT_MATRA` | **Incorrect Matras / Diacritics** | Discrepancies in vowel lengths or omitted *anusvara / chandrabindu*. | `hu` to `हूँ` vs. `हु` | Devanagari morphological dictionary post-processing. |
 | `ENGLISH_TRANSLITERATION` | **English Words in Transliteration** | Loanwords phonetically converted to native script. | `zoom meeting` to `ज़ूम मीटिंग` | Pre-transliteration Language Identification (LID) filtering. |
@@ -279,7 +293,7 @@ The application classifies errors into 8 diagnostic categories defined in the as
 
 ---
 
-## 11. Prompt Engineering Specification
+## Prompt Engineering Specification
 
 The **BharatGen Param-1** generative writing enhancement module employs structured prompt templates designed to eliminate hallucinations while preserving entities, numbers, and factual integrity:
 
@@ -305,7 +319,7 @@ Improved Hindi:
 
 ---
 
-## 12. Academic Demonstration Protocol
+## Academic Demonstration Protocol
 
 For evaluation viva and laboratory demonstrations, follow this sequence:
 
@@ -314,31 +328,23 @@ For evaluation viva and laboratory demonstrations, follow this sequence:
    ```text
    mera naam likith hai aur mai bangalore me rehta hu
    ```
-   Click **Transform All (End-to-End)**. Verify the resulting cards:
+   Click **Transform All (End-to-End)**. Verify the resulting outputs:
    - **IndicXlit Output:** `मेरा नाम लिखित है और मैं बैंगलोर में रहता हूँ`
    - **Param-1 Polish:** `मेरा नाम लिखित है और मैं बैंगलोर में रहता हूँ।` (normalized punctuation and nasalization)
    - **IndicTrans2 Translation:** `My name is Likith and I live in Bangalore.`
 3. **Complex Scenario Testing:** Use the preset scenario chips to demonstrate:
-   - *Office / Commute:* `Mujhe aaj office jana hai` $\rightarrow$ `I have to go to the office today.`
-   - *Project Submission:* `kripya project report ki pdf file jaldi bhej dijiye.` $\rightarrow$ `Please send PDF file to the project report quickly.`
+   - *Office / Commute:* `Mujhe aaj office jana hai` to `I have to go to the office today.`
+   - *Project Submission:* `kripya project report ki pdf file jaldi bhej dijiye.` to `Please send PDF file to the project report quickly.`
    - *Technical Query:* `kal hamari data science ki class kitne baje shuru hogi?`
 4. **Quantitative Evaluation Review:** Navigate to **Evaluation Dashboard**. Review the aggregate metrics (13.99% Average CER, 74.13% Word Accuracy, 33.03 BLEU) and Altair category distributions.
 5. **Failure Analysis Inspection:** Review the diagnostic case studies explaining real-world error categorization and remediation strategies.
 
 ---
 
-## 13. Limitations and Future Work
+## References
 
-1. **Code-Mixed Loanword Handling:** Complex technical jargon can occasionally undergo phonetic transliteration rather than script retention. Integrating an upstream Language Identification (LID) classifier will improve retention.
-2. **Homograph Disambiguation:** Roman words with dual meanings (e.g., *kal* meaning yesterday or tomorrow) require broader conversational context prior to transliteration.
-3. **4-Bit Local Quantization:** Deploying optimized GGUF / AWQ quantized weights for Param-1 will allow native on-device inference entirely within 4 GB VRAM without CPU offloading.
-
----
-
-## 14. References
-
-1. **AI4Bharat IndicXlit:** Madhani et al., *"Aksharantar: Towards Building Open Transliteration Tools for the Next Billion Users"*, 2022. [GitHub](https://github.com/AI4Bharat/IndicXlit)
-2. **AI4Bharat IndicTrans2:** Gala et al., *"IndicTrans2: Towards High-Quality and Accessible Machine Translation for all 22 Scheduled Indian Languages"*, 2023. [GitHub](https://github.com/AI4Bharat/IndicTrans2)
+1. **AI4Bharat IndicXlit:** Madhani et al., *"Aksharantar: Towards Building Open Transliteration Tools for the Next Billion Users"*, 2022. [GitHub Repository](https://github.com/AI4Bharat/IndicXlit)
+2. **AI4Bharat IndicTrans2:** Gala et al., *"IndicTrans2: Towards High-Quality and Accessible Machine Translation for all 22 Scheduled Indian Languages"*, 2023. [GitHub Repository](https://github.com/AI4Bharat/IndicTrans2)
 3. **BharatGen AI Initiative:** *"PARAM-1 Bilingual Language Model Family"*, IIT Bombay & BharatGen Consortium, 2024. [Hugging Face](https://huggingface.co/bharatgenai)
 4. **Aksharantar Benchmark Dataset:** [Hugging Face Datasets / AI4Bharat](https://github.com/AI4Bharat/IndianNLP-Transliteration)
 
