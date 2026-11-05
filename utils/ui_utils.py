@@ -1,316 +1,480 @@
 """
-Modern Consumer-Grade SaaS Design System for Hinglish AI.
-Inspired by Linear, DeepL, and Notion AI.
-Features theme-adaptive styling, polished glassmorphism, responsive cards,
-and sleek typography for Roman and Devanagari text.
+Apple Light Design System (Zero Gradients, Clean Solid Modern Palette).
+Colors: White (#ffffff), Light Background (#f8fafc), Solid Apple Blue (#0071e3),
+Mint Green (#059669), and Slate Black (#0f172a).
 """
 
 import streamlit as st
 
-CONSUMER_CSS = """
+APPLE_SOLID_LIGHT_CSS = """
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-    /* Global Typography & Background */
-    html, body, [class*="css"], .stMarkdown, .stText {
-        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    /* CSS Reset & Global Layout */
+    *, *::before, *::after {
+        box-sizing: border-box !important;
     }
 
-    /* Streamlit Main Container Adjustment */
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        background-color: #f8fafc !important;
+        color: #0f172a !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Completely eliminate Streamlit sidebar and collapse buttons */
+    [data-testid="stSidebar"], 
+    section[data-testid="stSidebar"], 
+    [data-testid="collapsedControl"],
+    button[kind="header"] {
+        display: none !important;
+        visibility: hidden !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    /* Streamlit Main Container Optimization */
     .block-container {
-        padding-top: 1.8rem !important;
-        padding-bottom: 3rem !important;
-        max-width: 1280px !important;
+        padding-top: 1rem !important;
+        padding-bottom: 4rem !important;
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        max-width: 1220px !important;
+        margin: 0 auto !important;
     }
 
-    /* Top Brand Navigation Bar */
-    .brand-nav {
+    header[data-testid="stHeader"] {
+        background: transparent !important;
+        display: none !important;
+    }
+
+    /* Target standard typography without breaking Streamlit icon fonts/ligatures */
+    html, body, p, h1, h2, h3, h4, h5, h6, input, textarea, select {
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        letter-spacing: -0.012em;
+        color: #0f172a;
+    }
+
+    /* Apple Top Navigation Bar - Solid White & Clean Border */
+    .apple-top-nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0.75rem 1.25rem;
-        background: rgba(30, 41, 59, 0.4);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        backdrop-filter: blur(16px);
-        margin-bottom: 1.5rem;
+        padding: 0.85rem 1.4rem;
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
     }
 
-    .brand-title-wrap {
+    .apple-nav-brand {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
+        gap: 0.85rem;
     }
 
-    .brand-logo {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-        background: linear-gradient(135deg, #6366F1 0%, #A855F7 100%);
+    .apple-nav-badge-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background-color: #0f172a;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.2rem;
-        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
-    }
-
-    .brand-text-title {
-        font-size: 1.25rem;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin: 0;
-    }
-
-    .brand-badge {
-        font-size: 0.72rem;
+        font-size: 0.82rem;
         font-weight: 700;
-        padding: 2px 8px;
-        border-radius: 6px;
-        background: rgba(99, 102, 241, 0.15);
-        color: #A5B4FC;
-        border: 1px solid rgba(99, 102, 241, 0.3);
+        color: #ffffff;
+        letter-spacing: -0.02em;
     }
 
-    /* Quick Preset Chips */
-    .chips-bar {
-        display: flex;
-        gap: 0.5rem;
-        overflow-x: auto;
-        padding-bottom: 0.5rem;
-        margin-bottom: 1rem;
+    .apple-nav-title {
+        font-size: 0.98rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: #0f172a;
+        margin: 0;
+        line-height: 1.2;
     }
 
-    /* Editor Canvas Cards */
-    .editor-container {
-        background: rgba(15, 23, 42, 0.65);
-        border: 1px solid rgba(255, 255, 255, 0.09);
-        border-radius: 18px;
+    .apple-nav-desc {
+        font-size: 0.74rem;
+        color: #64748b;
+        margin-top: 1px;
+    }
+
+    /* Top Page Navigation Pills */
+    div[data-testid="stPageLink"] a {
+        background-color: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 10px !important;
+        color: #334155 !important;
+        font-size: 0.86rem !important;
+        font-weight: 600 !important;
+        padding: 0.5rem 1rem !important;
+        transition: all 0.15s ease !important;
+        text-decoration: none !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    div[data-testid="stPageLink"] a:hover {
+        background-color: #f8fafc !important;
+        border-color: #cbd5e1 !important;
+        color: #0071e3 !important;
+    }
+
+    div[data-testid="stPageLink"] a[aria-current="page"] {
+        background-color: #0071e3 !important;
+        border-color: #0071e3 !important;
+        color: #ffffff !important;
+        font-weight: 600 !important;
+        box-shadow: 0 2px 6px rgba(0, 113, 227, 0.25) !important;
+    }
+
+    /* Apple Pro Workspace Cards */
+    .apple-card {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
         padding: 1.4rem;
-        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(20px);
-        margin-bottom: 1.5rem;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
     }
 
-    .editor-container:focus-within {
-        border-color: rgba(99, 102, 241, 0.55);
-        box-shadow: 0 12px 35px -8px rgba(99, 102, 241, 0.25);
-    }
-
-    .editor-header {
+    .apple-card-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.85rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #f1f5f9;
     }
 
-    .editor-header-title {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.85rem;
+    .apple-card-title {
+        font-size: 0.82rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.06em;
-        color: #94A3B8;
+        color: #0f172a;
     }
 
-    /* Hero Output Display */
-    .hero-output-box {
-        background: linear-gradient(145deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.7));
-        border: 1px solid rgba(99, 102, 241, 0.25);
-        border-radius: 18px;
-        padding: 1.6rem;
-        box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.45);
-        position: relative;
-        overflow: hidden;
-        margin-bottom: 1.5rem;
+    /* Badges - Solid Colors Only (No Gradients) */
+    .badge-blue {
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 3px 9px;
+        border-radius: 9999px;
+        background-color: #eff6ff;
+        color: #0071e3;
+        border: 1px solid #bfdbfe;
     }
 
-    .hero-output-box::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, #6366F1, #A855F7, #EC4899);
+    .badge-green {
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 3px 9px;
+        border-radius: 9999px;
+        background-color: #ecfdf5;
+        color: #059669;
+        border: 1px solid #a7f3d0;
     }
 
-    .hero-output-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-        padding-bottom: 0.6rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    .badge-slate {
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 3px 9px;
+        border-radius: 9999px;
+        background-color: #f1f5f9;
+        color: #475569;
+        border: 1px solid #e2e8f0;
     }
 
-    .hero-output-title {
-        font-size: 0.9rem;
-        font-weight: 700;
-        color: #C7D2FE;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
+    .badge-amber {
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 3px 9px;
+        border-radius: 9999px;
+        background-color: #fffbeb;
+        color: #b45309;
+        border: 1px solid #fde68a;
     }
 
-    .hero-devanagari-text {
+    /* Output Displays */
+    .output-display-card {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 14px;
+        padding: 1.5rem;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .output-devanagari-hero {
         font-family: 'Noto Sans Devanagari', sans-serif !important;
         font-size: 1.55rem;
         line-height: 1.65;
         font-weight: 600;
-        color: #FFFFFF;
-        letter-spacing: 0.01em;
-        min-height: 75px;
+        color: #0f172a;
+        min-height: 68px;
+        word-break: break-word;
+        padding-top: 4px;
     }
 
-    .hero-english-text {
+    .output-english-hero {
         font-size: 1.35rem;
-        line-height: 1.6;
+        line-height: 1.55;
         font-weight: 500;
-        color: #F1F5F9;
+        color: #1e293b;
         min-height: 60px;
+        word-break: break-word;
+        letter-spacing: -0.015em;
+        padding-top: 4px;
     }
 
-    /* Sleek Comparison Cards */
-    .compare-card {
-        background: rgba(30, 41, 59, 0.4);
-        border: 1px solid rgba(255, 255, 255, 0.07);
-        border-radius: 16px;
-        padding: 1.2rem;
+    /* Comparison Cards */
+    .matrix-card {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.15rem;
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transition: transform 0.15s ease, border-color 0.15s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
     }
 
-    .compare-card:hover {
-        transform: translateY(-2px);
-        border-color: rgba(255, 255, 255, 0.16);
-    }
-
-    .compare-card-top {
+    .matrix-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.65rem;
+        border-bottom: 1px solid #f1f5f9;
+        padding-bottom: 0.4rem;
     }
 
-    .compare-label {
+    .matrix-title {
+        font-size: 0.74rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #64748b;
+    }
+
+    .matrix-content {
+        font-size: 1.08rem;
+        line-height: 1.5;
+        color: #0f172a;
+        min-height: 50px;
+        word-break: break-word;
+        font-weight: 500;
+    }
+
+    .matrix-content-devanagari {
+        font-family: 'Noto Sans Devanagari', sans-serif !important;
+        font-size: 1.22rem;
+        font-weight: 600;
+        color: #0f172a;
+    }
+
+    /* Metric Activity Tiles - Solid White with Clean Borders */
+    .metric-activity-card {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.2rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+
+    .metric-activity-value {
+        font-size: 1.95rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        margin-bottom: 0.2rem;
+    }
+
+    .metric-activity-label {
         font-size: 0.78rem;
         font-weight: 700;
-        letter-spacing: 0.05em;
+        color: #0f172a;
         text-transform: uppercase;
-        color: #94A3B8;
+        letter-spacing: 0.04em;
     }
 
-    .compare-body {
-        font-size: 1.15rem;
-        line-height: 1.55;
-        color: #F8FAFC;
-        min-height: 55px;
-        word-break: break-word;
+    .metric-activity-subtext {
+        font-size: 0.73rem;
+        color: #64748b;
+        margin-top: 3px;
     }
 
-    .compare-body-hindi {
-        font-family: 'Noto Sans Devanagari', sans-serif !important;
-        font-size: 1.25rem;
-        font-weight: 500;
-        color: #FFFFFF;
+    /* Streamlit Container Border Styling (Native Card) */
+    [data-testid="stVerticalBlockBorderWrapper"] > div {
+        background-color: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 14px !important;
+        padding: 1.25rem !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+        margin-bottom: 0.85rem !important;
     }
 
-    /* Pill Badges */
-    .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        font-size: 0.72rem;
-        font-weight: 600;
-        padding: 3px 10px;
-        border-radius: 9999px;
+    /* Streamlit Expander - Clean Light Theme */
+    [data-testid="stExpander"] {
+        background-color: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 12px !important;
+        margin-bottom: 0.65rem !important;
+        overflow: hidden !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
     }
 
-    .pill-indigo {
-        background: rgba(99, 102, 241, 0.15);
-        color: #A5B4FC;
-        border: 1px solid rgba(99, 102, 241, 0.35);
-    }
-
-    .pill-purple {
-        background: rgba(168, 85, 247, 0.15);
-        color: #D8B4FE;
-        border: 1px solid rgba(168, 85, 247, 0.35);
-    }
-
-    .pill-emerald {
-        background: rgba(16, 185, 129, 0.15);
-        color: #6EE7B7;
-        border: 1px solid rgba(16, 185, 129, 0.35);
-    }
-
-    .pill-slate {
-        background: rgba(148, 163, 184, 0.15);
-        color: #CBD5E1;
-        border: 1px solid rgba(148, 163, 184, 0.25);
-    }
-
-    /* Custom Streamlit Buttons override */
-    div.stButton > button[kind="primary"] {
-        background: linear-gradient(135deg, #6366F1 0%, #4F46E5 50%, #4338CA 100%) !important;
-        color: #FFFFFF !important;
-        font-weight: 700 !important;
+    [data-testid="stExpander"] details {
         border: none !important;
-        border-radius: 12px !important;
-        padding: 0.65rem 1.4rem !important;
-        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4) !important;
-        transition: all 0.2s ease !important;
     }
 
-    div.stButton > button[kind="primary"]:hover {
-        transform: translateY(-1px) !important;
-        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.55) !important;
-    }
-
-    div.stButton > button[kind="secondary"] {
-        background: rgba(30, 41, 59, 0.6) !important;
-        color: #E2E8F0 !important;
+    [data-testid="stExpander"] summary {
         font-weight: 600 !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: #0f172a !important;
+        padding: 0.75rem 1rem !important;
         border-radius: 12px !important;
-        transition: all 0.2s ease !important;
     }
 
-    div.stButton > button[kind="secondary"]:hover {
-        background: rgba(51, 65, 85, 0.8) !important;
-        border-color: rgba(99, 102, 241, 0.4) !important;
-        color: #FFFFFF !important;
+    [data-testid="stExpander"] summary:hover {
+        background-color: #f8fafc !important;
     }
 
-    /* Streamlit Textarea styling */
+    /* Streamlit Text Area Override */
     .stTextArea textarea {
-        background-color: rgba(15, 23, 42, 0.5) !important;
-        color: #F8FAFC !important;
+        background-color: #ffffff !important;
+        color: #0f172a !important;
         font-size: 1.15rem !important;
-        line-height: 1.6 !important;
+        line-height: 1.65 !important;
         border-radius: 12px !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        padding: 0.9rem !important;
+        border: 1px solid #cbd5e1 !important;
+        padding: 0.95rem !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
     }
 
     .stTextArea textarea:focus {
-        border-color: #6366F1 !important;
-        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+        border-color: #0071e3 !important;
+        box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15) !important;
+    }
+
+    /* Streamlit Primary Button - Solid Apple Blue */
+    div.stButton > button[kind="primary"] {
+        background-color: #0071e3 !important;
+        color: #ffffff !important;
+        font-weight: 600 !important;
+        font-size: 0.92rem !important;
+        border: none !important;
+        border-radius: 10px !important;
+        padding: 0.6rem 1.3rem !important;
+        box-shadow: 0 2px 6px rgba(0, 113, 227, 0.25) !important;
+        transition: all 0.15s ease !important;
+    }
+
+    div.stButton > button[kind="primary"]:hover {
+        background-color: #0077ed !important;
+        box-shadow: 0 4px 10px rgba(0, 113, 227, 0.35) !important;
+    }
+
+    /* Streamlit Secondary Button - Solid White with Border */
+    div.stButton > button[kind="secondary"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        font-weight: 500 !important;
+        font-size: 0.88rem !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 10px !important;
+        padding: 0.55rem 1rem !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+        transition: all 0.15s ease !important;
+    }
+
+    div.stButton > button[kind="secondary"]:hover {
+        background-color: #f8fafc !important;
+        border-color: #94a3b8 !important;
+        color: #0071e3 !important;
+    }
+
+    /* Streamlit Tabs - Apple Segmented Bar */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 3px !important;
+        background-color: #f1f5f9 !important;
+        padding: 4px !important;
+        border-radius: 10px !important;
+        border: 1px solid #e2e8f0 !important;
+        width: 100% !important;
+    }
+
+    .stTabs [data-baseweb="tab"] {
+        height: 36px !important;
+        border-radius: 7px !important;
+        color: #64748b !important;
+        font-size: 0.84rem !important;
+        font-weight: 600 !important;
+        border: none !important;
+        padding: 0 14px !important;
+        background-color: transparent !important;
+    }
+
+    .stTabs [aria-selected="true"] {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        font-weight: 700 !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    /* Selectbox Override */
+    div[data-baseweb="select"] > div {
+        background-color: #ffffff !important;
+        border-color: #cbd5e1 !important;
+        border-radius: 10px !important;
+        color: #0f172a !important;
+    }
+
+    /* Dividers */
+    hr {
+        border-color: #e2e8f0 !important;
+        margin: 1.5rem 0 !important;
     }
 </style>
 """
 
 def inject_consumer_css():
-    """Injects high-end consumer UI styles into Streamlit."""
-    st.markdown(CONSUMER_CSS, unsafe_allow_html=True)
+    """Injects solid Apple Light aesthetic into Streamlit."""
+    st.markdown(APPLE_SOLID_LIGHT_CSS, unsafe_allow_html=True)
+
+def render_top_navbar(current_page: str = "studio"):
+    """
+    Renders clean top navigation bar.
+    """
+    st.markdown("""
+    <div class="apple-top-nav">
+        <div class="apple-nav-brand">
+            <div class="apple-nav-badge-icon">HA</div>
+            <div>
+                <div class="apple-nav-title">Hinglish Writing Assistant</div>
+                <div class="apple-nav-desc">AI4Bharat IndicXlit & IndicTrans2 · BharatGen Param-1</div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Clean top navigation pills
+    nav_col1, nav_col2, nav_col3 = st.columns([1, 1, 1])
+    with nav_col1:
+        st.page_link("pages/1_Writing_Assistant.py", label="Writing Studio")
+    with nav_col2:
+        st.page_link("pages/2_Evaluation.py", label="Benchmark & Metrics")
+    with nav_col3:
+        st.page_link("pages/3_About.py", label="System Architecture")
+
+    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
