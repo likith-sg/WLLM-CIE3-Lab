@@ -1,7 +1,7 @@
 # Hinglish Smart Writing Assistant
 
 **Student Name:** Likith S G  
-**USN / Student ID:** 1RVU23CSE236  
+**USN:** 1RVU23CSE236  
 
 This repository contains the complete implementation, quantitative evaluation, and technical documentation for the **Hinglish Smart Writing Assistant**. The system converts colloquial Roman-script Hinglish into native Devanagari Hindi using AI4Bharat IndicXlit, refines grammatical phrasing and style using BharatGen Param-1, and translates the polished Hindi output into natural English using AI4Bharat IndicTrans2. The project includes a multi-page Streamlit web studio, a 40-case empirical evaluation benchmark derived from Aksharantar, and an automated test suite.
 
